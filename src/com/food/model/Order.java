@@ -1,93 +1,53 @@
 package com.food.model;
 
-
-
 /**
  * Order entity. @author MyEclipse Persistence Tools
  */
 
-public class Order  implements java.io.Serializable {
+public class Order implements java.io.Serializable {
 
+	// Fields
 
-    // Fields    
+	private Integer orderid;
+	private Shop shop;
+	private Integer total;
 
-     private Integer orderid;
-     private Customer customer;
-     private Food food;
-     private Integer foodnum;
-     private Integer total;
+	// Constructors
 
+	/** default constructor */
+	public Order() {
+	}
 
-    // Constructors
+	/** full constructor */
+	public Order(Shop shop, Integer total) {
+		this.shop = shop;
+		this.total = total;
+	}
 
-    /** default constructor */
-    public Order() {
-    }
+	// Property accessors
 
-	/** minimal constructor */
-    public Order(Customer customer, Food food, Integer foodnum) {
-        this.customer = customer;
-        this.food = food;
-        this.foodnum = foodnum;
-    }
-    
-    /** full constructor */
-    public Order(Customer customer, Food food, Integer foodnum, Integer total) {
-        this.customer = customer;
-        this.food = food;
-        this.foodnum = foodnum;
-        this.total = total;
-    }
+	public Integer getOrderid() {
+		return this.orderid;
+	}
 
-   
-    // Property accessors
+	public void setOrderid(Integer orderid) {
+		this.orderid = orderid;
+	}
 
-    public Integer getOrderid() {
-        return this.orderid;
-    }
-    
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
-    }
+	public Shop getShop() {
+		return this.shop;
+	}
 
-    public Customer getCustomer() {
-        return this.customer;
-    }
-    
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
 
-    public Food getFood() {
-        return this.food;
-    }
-    
-    public void setFood(Food food) {
-        this.food = food;
-    }
+	public Integer getTotal() {
+		return this.total;
+	}
 
-    public Integer getFoodnum() {
-        return this.foodnum;
-    }
-    
-    public void setFoodnum(Integer foodnum) {
-        this.foodnum = foodnum;
-    }
-
-    public Integer getTotal() {
-        return this.total;
-    }
-    
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-   
-
-
-
-
-
-
-
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
 
 }

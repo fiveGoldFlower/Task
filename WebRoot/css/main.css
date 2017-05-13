@@ -127,7 +127,7 @@ main ul li p a.add-order:hover{
 	height:600px;
 	background-image:url('../images/bg.jpg');
 	background-repeat:no-repeat;
-    -webkit-background-size:cover;
+    -webkit-background-size:cover;/*不管图片多大，我都让它平铺，这是cover做到的*/
     -moz-background-size:cover;
     padding-top:30px;
 
@@ -140,7 +140,7 @@ main ul li p a.add-order:hover{
 	padding:0 30px 30px 30px;
 	background-color: #fff;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-    background-image: -webkit-linear-gradient(top, #fff, #eee);
+    background-image: -webkit-linear-gradient(top, #fff, #eee);/*做了一个渐变，白色到灰色的渐变*/
     background-image: -moz-linear-gradient(top, #fff, #eee);
     background-image: -ms-linear-gradient(top, #fff, #eee);
     background-image: -o-linear-gradient(top, #fff, #eee);
@@ -148,7 +148,7 @@ main ul li p a.add-order:hover{
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;  
-    -webkit-box-shadow:
+    -webkit-box-shadow:/*设置阴影*/
           0 0 2px rgba(0, 0, 0, 0.2),
           0 1px 1px rgba(0, 0, 0, .2),
           0 3px 0 #fff,
@@ -179,7 +179,7 @@ main ul li p a.add-order:hover{
     font: normal 18px/1 "microsoft YaHei";
     position: relative;
 }
-.bg .login h3:after, .bg .login h3:before{
+.bg .login h3:after, .bg .login h3:before{/*h3:afeter h3:before ,可以在h3前面和后面设置效果*/
     background-color: #777;
     content: "";
     position: absolute;
@@ -187,7 +187,7 @@ main ul li p a.add-order:hover{
     top: 40px;
     width: 130px;   
 }
-.bg .login h3:after
+.bg .login h3:after/*做渐变*/
 { 
     background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
     background-image: -webkit-linear-gradient(left, #777, #fff);

@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>所有订单</title>
+    <title>评论</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -45,51 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <main class="container-fluid">
       <div class="row">
          <div class="col-md-12">
-		    <s:form action="order/order_queryOrders" method="post">
-		      <div class="panel panel-info">
-	                 <div class="panel-heading">
-	                    <h3 class="panel-title">我的订单</h3>
-	                 </div>
-	                 <div class="panel-body panel-body-table">
-	                   <div class="table-responsive" style="overflow-x:hidden">
-	                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-	                         <thead>
-	                           <tr>
-	                              <th>序号</th>  
-							          <th>订单号</th>
-							          <th>美食</th>
-							          <th>单价</th> 
-							          <th>份数</th>  
-							          <th>总价</th>
-	                              </tr>
-	                          </thead>
-	                          <tbody>
-	                              <s:iterator value="orderList" status="status">
-	                                  <tr>
-	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td><s:a href="order/order_showDetail?order.orderid=%{orderid}">
-		                                   <!--<s:property value="orderid"></s:property>-->1</s:a></td>
-	                                      <td><s:property value="food.foodname"></s:property></td>
-	                                      <td class="center"><c:choose>
-	       <c:when test="${customer.role ==1}">
-	         <s:property value="food.vipprice"></s:property></td>
-	       </c:when>
-	         <c:when test="${customer.role ==2}">
-	         <s:property value="food.price"></s:property></td>
-	       </c:when>
-	     </c:choose> 
-	                                      <td class="center"><s:property value="foodnum"></s:property></td>
-	                                      <td class="center"><s:property value="total"></s:property></td>
-	                                       <td><s:a href="order/order_addsum?order.food.foodid=%{foodid}"><s:property value="order.foodid"></s:property>1</s:a>添加评</td>
-	                                  </tr>
-	                              </s:iterator>
-	                          </tbody>
-	                        </table>
-	                      </div>
-	                    </div>
-	                </div>
-		       </s:form>
-	       </div>
+		     <s:form action="comment/comment_addComment" method="post">
+		    <s:hidden name="order.orderid"/>
+		     <p><s:property value="order.food.foodid"></s:property></p>
+		     <p><s:property value="order.customer.customerid"></s:property></p>
+		     <p>发表你的评论：<input type="text" name="comment.comment" value="<s:property value='comment.comment'/>"class="form-control input-sm" placeholder="&yen;"required>
+		   <button type="submit" class="btn btn-success pull-right">提  交 </button></s:form>
 	   </div>
 	</main>
 	

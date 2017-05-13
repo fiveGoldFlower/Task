@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               </div>
                               <label class="control-label col-md-3">美食会员价</label>
                               <div class="col-md-2">
-                               <input type="text" name="food.price" class="form-control input-sm" placeholder="&yen;" required>                                                     
+                               <input type="text" name="food.vipprice" class="form-control input-sm" placeholder="&yen;" required>                                                     
 			                    </div>
 			                  </div>
 			           <div class="form-group">

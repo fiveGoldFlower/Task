@@ -37,6 +37,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <c:when test ="${customer.role ==2}">
 	         <s:property value="food.price"></s:property></c:when></c:choose></p>
      <p>份数：<s:property value="order.foodnum"></s:property></p>
-     <p>总价：<s:property value="order.total"></s:property></p>
+     <!--  <p>总价：<s:property value="order.total"></s:property></p>-->
+      <!--   <p>发表你的评论: <input type="text" name="food.comment" value="<s:property value='food.comment'/>" class="form-control input-sm" placeholder="&yen;" required>
+       --> <!--  <a href="add_comment.jsp?order.food.foodid=<s:property 
+	                  value='order.food.foodid'/>&order.customer.customerid=<s:property value='#session.customer.customerid'/>">
+	                  <i class="fa fa-cutlery"></i> 来一份-->
+	                  <a href="add_comment.jsp">添加评论</a>
   </body>
 </html>

@@ -1,27 +1,25 @@
 package com.food.action;
 
-
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Resource;
 
-import org.apache.coyote.Request;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.food.dao.CustomerDao;
 import com.food.dao.FoodDao;
-import com.food.dao.OrderDao;
 import com.food.dao.ShopDao;
 import com.food.model.Customer;
 import com.food.model.Food;
-import com.food.model.Order;
 import com.food.model.Shop;
 import com.food.dao.ShopDao;
+import com.opensymphony.xwork2.ActionContext;
 @Controller @Scope("prototype")
-public class OrderAction {
+public class ShopAction {
+	@Resource SessionFactory factory;
 	 @Resource ShopDao shopDao;
 	    @Resource CustomerDao customerDao;
 	    @Resource FoodDao foodDao;
@@ -29,13 +27,7 @@ public class OrderAction {
 	    private List<Shop> shopList;
 	    private Customer customer;
 	    private Food food;
-	    @Resource OrderDao orderDao;
-	    private List<Order> orderList;
-	    private int total;
-	    Iterator<Shop> it ;
-	    private Shop a[]=new Shop[50];
-	   // List<Order> orde=new ArrayList<Order>();
-	  //private  Shop[] counts = Request.getParameterValues(shop);
+	    
 		public Shop getShop() {
 			return shop;
 		}
@@ -44,7 +36,9 @@ public class OrderAction {
 			this.shop = shop;
 		}
 		
-			
+		public List<Shop> getShopList() {
+			return shopList;
+		}
 
 		public void setShopList(List<Shop> shopList) {
 			this.shopList = shopList;
@@ -67,51 +61,26 @@ public class OrderAction {
 		}
 		
 		/*添加shop*/
-		public String addOrder() throws Exception{
+		public String addshop() throws Exception{
 			
-			Order ord =new Order();
-			//ord.setOrderid(x);
-    		
-           // Shop shop=new Shop();
-			//customer = customerDao.queryCustomerInfo(customer.getName()).get(0);
-			int i=0;
-			customer = customerDao.GetCustomerById(customer.getCustomerid());
-	    	shopList = shopDao.QueryShopInfo(customer);
-	    	it= shopList.iterator();
-	    	while(it.hasNext()){
-		    		//Order ord1=new Order();
-		    		//Shop shop=new Shop();
-		    		Shop shop=(Shop)it.next();
-		    		System.out.print(shop);
-		    		 //Order ord1=new Order();
-		    		a[i]=shop;
-		    		i++;
-		    		//ord1.setShop(shop);
-		    		total+=shop.getUnitprice()*shop.getFoodnum();
-		    		//ord1.setTotal(total);
-		    		}
-	    	
-		    	for(int j=0;j<i;j++){
-		    		ord.setShop(a[j]);
-		    		ord.setTotal(total);
-		    		//OrderDao order=new OrderDao();
-		    		// @Resource order;
-		    		
-		    		orderDao.AddOrder(ord);
-		    	}
-		    
-		    	
-		    	
-	    	
-			//ord.setCustomer(customer);
-			//ord.setFood(food);
+
+			customer = customerDao.queryCustomerInfo(customer.getName()).get(0);
+			Shop shop =new Shop();
+			shop.setCustomer(customer);
+			shop.setFood(food);
 			//因为是“来一份”，所以置为1
-			//ord.setFoodnum(1);
+			shop.setFoodnum(1);
+			if(customer.getRole()==1){
+				shop.setUnitprice(foodDao.GetFoodById(food.getFoodid()).getVipprice()*1);
+				shopDao.AddShop(shop);
+			}
+			else{
+				shop.setUnitprice(foodDao.GetFoodById(food.getFoodid()).getPrice()*1);
+				shopDao.AddShop(shop);
+			}
+						return "shop_message";
 			
-		
-						return "order_message";
-	    	}	
-		
+		}
 		
 		/*显示所有shop*/
 	    public String showshop() {
@@ -119,15 +88,25 @@ public class OrderAction {
 	        //将系统设定为用户名不重复，因此在系统中查询到第一个该名称用户即可
 	    	System.out.println(customer.getName());
 	        Customer cus= customerDao.queryCustomerInfo(customer.getName()).get(0);
-	        System.out.println(cus);
+	       // System.out.println(cus);
 	        //注意不需要food的查询条件时，下面语句的写法，直接将food的条件置为null
 	        shopList = shopDao.QueryShopInfo(cus);
 
 	        return "show";
 	    }
-
+	  /*  public String editShop() throws Exception {
+	    	//Shop sho=shopDao.GetShopById(shop.getShopid());
+	    //Food	foo=sho.getFood();
+	    //System.out.print(foo.getFoodid());
+	    	//foodDao.UpdateFood(foo);
+	    	shopDao.UpdateShop(shop);  
+	    	
+	        return "edit_message";
+	    }*/
+	  
 	    /*显示某一shop的详细信息*/
 	    public String showDetail() {
+	    	
 	    	System.out.print(shop.getShopid());
 	    	shop = shopDao.GetShopById(shop.getShopid());
 	        return "detail_view";
@@ -152,34 +131,18 @@ public class OrderAction {
 	    }*/
 	    
 	    /*查询shop*/
-	    public String queryShops() throws Exception {
+	  /*  public String queryShops() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	shopList = shopDao.QueryShopInfo(customer);
 	    	System.out.println(shopList);
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
 	        return "show";
-	    }
+	    }*/
 	    public String deleteShop() throws Exception {
 	    	
 	    	shopDao.DeleteShop(shop.getShopid());
-	        return "shop_message";
+	        return "message";
 	    }
-
-		public List<Order> getOrderList() {
-			return orderList;
-		}
-
-		public void setOrderList(List<Order> orderList) {
-			this.orderList = orderList;
-		}
-
-		public int getTotal() {
-			return total;
-		}
-
-		public void setTotal(int total) {
-			this.total = total;
-		}
 
 
 	}

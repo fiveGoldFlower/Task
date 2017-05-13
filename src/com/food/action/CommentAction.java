@@ -65,7 +65,8 @@ public class CommentAction extends ActionSupport{
 	
 	/*添加Order*/
 	public String addComment() throws Exception{
-		
+		order = orderDao.GetOrderById(order.getOrderid());
+		//System.out.print(order.getOrderid());
 		commentDao.AddComment(comment);
 	       return "message";
 		
@@ -104,11 +105,11 @@ public class CommentAction extends ActionSupport{
     }*/
     
     /*查询Order*/
-    public String queryComments() throws Exception {
-    	//food = foodDao.GetFoodById(food.getFoodid());
+  /*  public String queryComments() throws Exception {
+    	food = foodDao.GetFoodById(food.getFoodid());
     	commentList = commentDao.QueryCommentInfo(food);
         return "show";
-    }
+    }*/
 
 	public Comment getComment() {
 		return comment;

@@ -38,6 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       </c:when>
 	       <c:otherwise>
 	         <c:out value="${customer.name}"></c:out>, 欢迎您!
+	        &nbsp;&nbsp; <a href="customer/customer_loginout">注销</a>
+	         &nbsp;&nbsp;<a href="shop/shop_queryShops?customer.customerid=${customer.customerid}">查看购物车</a>
 	       </c:otherwise>
 	     </c:choose>
 		    
@@ -74,7 +76,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                  
 	                  <i class="fa fa-pencil"></i> 
 	                </a>
-	                &nbsp;&nbsp;<a href="food/food_deleteFood?food.foodid=<s:property 
+	              <!--    <a href="food/food_deleteFood?food.foodid=${food.foodid}">-->
+	                  &nbsp;&nbsp;<a href="food/food_deleteFood?food.foodid=<s:property 
 	                  value='foodid'/>">
 	                  <i class="fa fa-trash"></i> 
 	                </a>
@@ -93,8 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                                 原价： &yen;<s:property value="price"/>
 	                                                  会员价： &yen;<s:property value="vipprice"/>
 	                    <a href="comment/comment_queryComments?food.foodid=<s:property value='foodid'/>">查看评价</a>
-	                    
-	                <a href="order/order_addOrder?food.foodid=<s:property 
+	                      <a href="shop/shop_addshop?food.foodid=<s:property 
 	                  value='foodid'/>&customer.name=<s:property value='#session.customer.name'/>" class="add-order">
 	                  <i class="fa fa-cutlery"></i> 来一份
 	                </a>

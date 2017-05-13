@@ -38,12 +38,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" name="customer.name" class="form-control" placeholder="请输入用户名">
+                <input type="text" name="customer.name" class="form-control" placeholder="请输入用户名"required>
               </div>
               <s:fielderror fieldName="customer.name" cssClass="fielderror"/>
                <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" name="customer.password" class="form-control" placeholder="请输入密码">
+                <input type="password" name="customer.password" class="form-control" placeholder="请输入密码"required>
               </div>
               <s:fielderror fieldName="customer.password" cssClass="fielderror"/>
           </div>

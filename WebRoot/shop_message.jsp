@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -9,24 +10,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'order_message.jsp' starting page</title>
+    <title>My JSP 'shop_message.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-	
-	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
+	<meta http-equiv="Refresh" content="1;url=food/food_showFood">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
   </head>
   
   <body>
- 
-      成功下单。
-      <td><s:property value=order.total></s:property></td>
+    成功将一种食物加入购物车。 <br>
   </body>
 </html>

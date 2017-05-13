@@ -20,7 +20,37 @@
 			<generator class="increment"></generator>
 		</primary-key>
 	</table>
-<table name="t_order" catalog="homework" class="com.food.model.Order">
+	<table name="t_order" catalog="homework"
+		class="com.food.model.Order">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="t_comment" catalog="homework2"
+		class="com.food.model.Comment">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="t_customer" catalog="homework2"
+		class="com.food.model.Customer">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="t_food" catalog="homework2"
+		class="com.food.model.Food">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="t_order" catalog="homework2"
+		class="com.food.model.Order">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+<table name="t_shop" catalog="homework2" class="com.food.model.Shop">
 	<primary-key>
 		<generator class="increment"></generator>
 	</primary-key>

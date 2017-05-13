@@ -18,20 +18,23 @@ public class FoodDao {
     	s.save(food);
 		
 	}
-	public void DeleteFood(int foodid)throws Exception{
-		Session s = factory.getCurrentSession(); 
-        Object food = s.load(Food.class, foodid);
-        s.delete(food);
-		}
+	 public void DeleteFood (Integer foodId) throws Exception {
+	        Session s = factory.getCurrentSession(); 
+	        Object food = s.load(Food.class, foodId);
+	        s.delete(food);
+	    }
+	    
 	 public void UpdateFood(Food food) throws Exception {
 	        Session s = factory.getCurrentSession();
 	        s.update(food);
 	    }
-	 public Food GetFoodById(int foodid) {
+	 /*根据主键获取对象*/
+	    public Food GetFoodById(Integer foodid) {
 	        Session s = factory.getCurrentSession();
-	        Food food= (Food)s.get(Food.class, foodid);
+	        Food food = (Food)s.get(Food.class, foodid);
 	        return food;
-	        }
+	    }
+	    
 	 @Transactional(propagation=Propagation.NOT_SUPPORTED)
 	    public ArrayList<Food> QueryAllFoods() {
 	        Session s = factory.getCurrentSession();

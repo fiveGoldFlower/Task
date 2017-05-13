@@ -6,6 +6,8 @@ import java.util.List;
 import com.food.model.Customer;
 import com.food.model.Food;
 import com.food.model.Order;
+import com.food.model.Shop;
+
 import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,9 +20,9 @@ public class OrderDao {
 	@Resource SessionFactory factory;
 	
 	 /*添加Order信息*/
-    public void AddOrder(Order order) throws Exception {
+    public void AddOrder(Order shop ) throws Exception {
     	Session s = factory.getCurrentSession();
-    	s.save(order);
+    	s.save(shop);
     }
     
     /*删除Order信息*/

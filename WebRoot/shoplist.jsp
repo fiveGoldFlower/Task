@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <a href="login.jsp">登录</a>
 	       </c:when>
 	       <c:otherwise>
-	         <c:out value="${customer.name}"></c:out>, 欢迎您!
+	         <c:out value="${customer.name}"></c:out>, 欢迎您! 
 	       </c:otherwise>
 	     </c:choose> 
        </div>    
@@ -45,42 +45,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <main class="container-fluid">
       <div class="row">
          <div class="col-md-12">
-		    <s:form action="order/order_queryOrders" method="post">
+		    <s:form action="shop/shop_queryShops" method="post">
 		      <div class="panel panel-info">
 	                 <div class="panel-heading">
-	                    <h3 class="panel-title">我的订单</h3>
+	                    <h3 class="panel-title">我的购物车</h3>
 	                 </div>
 	                 <div class="panel-body panel-body-table">
 	                   <div class="table-responsive" style="overflow-x:hidden">
 	                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	                         <thead>
 	                           <tr>
-	                              <th>序号</th>  
-							          <th>订单号</th>
+	                              <th>序号</th>
 							          <th>美食</th>
 							          <th>单价</th> 
-							          <th>份数</th>  
-							          <th>总价</th>
+							          <th>份数</th>
+							          <th></th>
+							          
 	                              </tr>
 	                          </thead>
 	                          <tbody>
-	                              <s:iterator value="orderList" status="status">
+	                              <s:iterator value="shopList" status="status">
 	                                  <tr>
 	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td><s:a href="order/order_showDetail?order.orderid=%{orderid}">
-		                                   <!--<s:property value="orderid"></s:property>-->1</s:a></td>
 	                                      <td><s:property value="food.foodname"></s:property></td>
-	                                      <td class="center"><c:choose>
-	       <c:when test="${customer.role ==1}">
-	         <s:property value="food.vipprice"></s:property></td>
-	       </c:when>
-	         <c:when test="${customer.role ==2}">
-	         <s:property value="food.price"></s:property></td>
-	       </c:when>
-	     </c:choose> 
+	                                      <!--  <td class="center">-->
+	                                        <td class="center"><s:property value="unitprice"></s:property></td>
 	                                      <td class="center"><s:property value="foodnum"></s:property></td>
-	                                      <td class="center"><s:property value="total"></s:property></td>
-	                                       <td><s:a href="order/order_addsum?order.food.foodid=%{foodid}"><s:property value="order.foodid"></s:property>1</s:a>添加评</td>
+
+	                                      <td> <a href="shop/shop_showDetail?shop.shopid=<s:property 
+	                  value='shopid'/>">
+	                  
+	                  <i class="fa fa-pencil"></i> 
+	                </a>
+	              <!--    <a href="food/food_deleteFood?food.foodid=${food.foodid}">-->
+	                  &nbsp;&nbsp;<a href="shop/shop_deleteShop?shop.shopid=<s:property 
+	                  value='shopid'/>">
+	                  <i class="fa fa-trash"></i> 
 	                                  </tr>
 	                              </s:iterator>
 	                          </tbody>
@@ -88,6 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                      </div>
 	                    </div>
 	                </div>
+	                <a href="order/order_addOrder?customer.customerid=${customer.customerid}">下单</a>
 		       </s:form>
 	       </div>
 	   </div>

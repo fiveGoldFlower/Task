@@ -16,17 +16,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<meta http-equiv="Refresh" content="0;url=shop/shop_queryShops">
 	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
-	
+	<meta http-equiv="Refresh" content="0;url=shop/shop_queryShops?customer.customerid=${customer.customerid}">
 	<link rel="shortcut icon" href="<%=basePath%>images/logo.png">
   </head>
   
   <body>
  
-      成功下单。
-      <td><s:property value=order.total></s:property></td>
+     
   </body>
 </html>

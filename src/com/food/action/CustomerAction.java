@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.food.dao.CustomerDao;
 import com.food.model.Customer;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -126,6 +127,11 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 					return "success";
 			    }
 			}
+		}
+		public String loginout(){
+			ActionContext.getContext().getSession().remove("customer");
+			return "index";
+			
 		}
 
 }

@@ -15,7 +15,7 @@
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="org.gjt.mm.mysql.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/homework?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/homework2?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="user" value="root"/>
 		<property name="password" value=""/>
 		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
@@ -40,9 +40,10 @@
 			      <value>com/food/model/Order.hbm.xml</value>
 			      <value>com/food/model/Customer.hbm.xml</value>
 			      <value>com/food/model/Comment.hbm.xml</value>
+			       <value>com/food/model/Shop.hbm.xml</value>
   
 			    </list>
-		</property>
+		 </property> 
 		 <property name="hibernateProperties">
 			 <value>
 			      hibernate.dialect=org.hibernate.dialect.MySQL5Dialect

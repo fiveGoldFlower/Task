@@ -186,7 +186,9 @@ public class FoodAction extends ActionSupport{
     }
     
     /*删除Food*/
+    /*删除Food*/
     public String deleteFood() throws Exception {
+    	
     	foodDao.DeleteFood(food.getFoodid());
         return "delete_message";
     }
