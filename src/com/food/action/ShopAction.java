@@ -94,7 +94,7 @@ public class ShopAction {
 
 	        return "show";
 	    }
-	  /*  public String editShop() throws Exception {
+	  public String editShop() throws Exception {
 	    	//Shop sho=shopDao.GetShopById(shop.getShopid());
 	    //Food	foo=sho.getFood();
 	    //System.out.print(foo.getFoodid());
@@ -102,7 +102,7 @@ public class ShopAction {
 	    	shopDao.UpdateShop(shop);  
 	    	
 	        return "edit_message";
-	    }*/
+	    }
 	  
 	    /*显示某一shop的详细信息*/
 	    public String showDetail() {
@@ -113,36 +113,36 @@ public class ShopAction {
 	    }
 	    
 	    /*显示shop的修改项*/
-	    /*public String showEdit() throws Exception {
-	    	shop = shopDao.GetshopById(shop.getshopid());
+	    public String showEdit() throws Exception {
+	    	shop = shopDao.GetShopById(shop.getShopid());
 	        return "edit_view";
-	    }*/
+	    }
 
 	    /*编辑shop*/
-	    /*public String editshop() throws Exception {
-	    	shopDao.Updateshop(shop);
+	  /*  public String editshop() throws Exception {
+	    	shopDao.UpdateShop(shop);
 	        return "edit_message";
 	    }*/
 	    
-	    /*删除shop*/
-	    /*public String deleteshop() throws Exception {
-	    	shopDao.Deleteshop(food.getFoodid());
+	   /*删除shop*/
+	  /*  public String deleteshop() throws Exception {
+	    	shopDao.DeleteShop(food.getFoodid());
 	        return "delete_message";
 	    }*/
 	    
 	    /*查询shop*/
-	  /*  public String queryShops() throws Exception {
+	   /*public String queryShops() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	shopList = shopDao.QueryShopInfo(customer);
 	    	System.out.println(shopList);
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
 	        return "show";
-	    }*/
+	    }
 	    public String deleteShop() throws Exception {
 	    	
 	    	shopDao.DeleteShop(shop.getShopid());
 	        return "message";
-	    }
+	    }*/
 
 
 	}

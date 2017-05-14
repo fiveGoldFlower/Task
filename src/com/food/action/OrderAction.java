@@ -67,7 +67,7 @@ public class OrderAction {
 		}
 		
 		/*添加shop*/
-		public String addOrder() throws Exception{
+		/*public String addOrder() throws Exception{
 			
 			Order ord =new Order();
 			//ord.setOrderid(x);
@@ -110,7 +110,7 @@ public class OrderAction {
 			
 		
 						return "order_message";
-	    	}	
+	    	}	*/
 		
 		
 		/*显示所有shop*/

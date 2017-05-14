@@ -34,8 +34,7 @@ public class ShopDao {
     public void UpdateShop(Shop shop) throws Exception {
         Session s = factory.getCurrentSession();
         s.update(shop);
-        s.flush();
-        s.clear(); 
+       
     }
     
     /*查询所有Shop信息*/

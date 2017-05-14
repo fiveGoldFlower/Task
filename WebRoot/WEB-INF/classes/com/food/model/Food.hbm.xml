@@ -26,7 +26,7 @@
             <key>
                 <column name="food" not-null="true" />
             </key>
-            <one-to-many class="com.food.model.Shop"/>
+            <one-to-many class="com.food.model.Shop" />
         </set>
         <set name="shops_1" inverse="true">
             <key>

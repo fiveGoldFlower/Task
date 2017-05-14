@@ -67,24 +67,24 @@ CREATE TABLE `t_food` (
 
 /*Data for the table `t_food` */
 
-insert  into `t_food`(`foodid`,`foodname`,`price`,`filepath`,`vipprice`) values (1,'鸡腿',50,'upload/f5f535bb-417b-414d-974f-78bfddac3072.jpg',20),(2,'牛排',100,'upload/beef.jpg',80);
+insert  into `t_food`(`foodid`,`foodname`,`price`,`filepath`,`vipprice`) values (2,'牛排',100,'upload/beef.jpg',80);
 
 /*Table structure for table `t_order` */
 
 DROP TABLE IF EXISTS `t_order`;
 
 CREATE TABLE `t_order` (
-  `orderid` int(40) NOT NULL,
+  `orderid` int(40) NOT NULL AUTO_INCREMENT,
   `shop` int(40) NOT NULL,
   `total` int(80) NOT NULL,
   PRIMARY KEY (`orderid`),
   KEY `FKA0C0C3C397E82D4` (`shop`),
-  CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`shop`) REFERENCES `t_shop` (`shopid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`shop`) REFERENCES `t_shop` (`shopid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_order` */
 
-insert  into `t_order`(`orderid`,`shop`,`total`) values (1,1,20),(2,2,100),(3,3,120),(4,4,140),(5,5,160),(6,6,180),(7,7,200),(8,8,220),(9,8,220),(20,8,220),(48,8,220),(56,1,20),(96,1,220),(97,9,320),(98,10,320);
+insert  into `t_order`(`orderid`,`shop`,`total`) values (2,2,100),(98,10,320);
 
 /*Table structure for table `t_shop` */
 
@@ -100,14 +100,14 @@ CREATE TABLE `t_shop` (
   KEY `FKCB62BBE1972E5A4` (`food`),
   KEY `FKCB62BBE1BFD518A4` (`customer`),
   CONSTRAINT `FKCB62BBE1972E5A4` FOREIGN KEY (`food`) REFERENCES `t_food` (`foodid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FKCB62BBE1BFD518A4` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerid`) ON UPDATE CASCADE,
+  CONSTRAINT `FKCB62BBE1BFD518A4` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `t_shop_ibfk_1` FOREIGN KEY (`food`) REFERENCES `t_food` (`foodid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `t_shop_ibfk_2` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerid`) ON UPDATE CASCADE
+  CONSTRAINT `t_shop_ibfk_2` FOREIGN KEY (`customer`) REFERENCES `t_customer` (`customerid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_shop` */
 
-insert  into `t_shop`(`shopid`,`food`,`customer`,`foodnum`,`unitprice`) values (1,1,2,1,20),(2,2,2,1,80),(3,1,2,1,20),(4,1,2,1,20),(5,1,2,1,20),(6,1,2,1,20),(7,1,2,1,20),(8,1,2,1,20),(9,2,3,3,80),(10,2,3,2,80);
+insert  into `t_shop`(`shopid`,`food`,`customer`,`foodnum`,`unitprice`) values (2,2,2,1,80),(10,2,3,2,80);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
