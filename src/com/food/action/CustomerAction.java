@@ -128,10 +128,10 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 			    }
 			}
 		}
-	/*	public String loginout(){
+		public String loginout(){
 			ActionContext.getContext().getSession().remove("customer");
 			return "index";
 			
-		}*/
+		}
 
 }
