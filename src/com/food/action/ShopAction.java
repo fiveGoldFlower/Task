@@ -1,5 +1,9 @@
 package com.food.action;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -17,6 +21,7 @@ import com.food.model.Food;
 import com.food.model.Shop;
 import com.food.dao.ShopDao;
 import com.opensymphony.xwork2.ActionContext;
+import com.sun.jmx.snmp.Timestamp;
 @Controller @Scope("prototype")
 public class ShopAction {
 	@Resource SessionFactory factory;
@@ -25,9 +30,11 @@ public class ShopAction {
 	    @Resource FoodDao foodDao;
 	     private Shop shop;
 	    private List<Shop> shopList;
+	    Iterator<Shop> it ;
 	    private Customer customer;
 	    private Food food;
-	    
+	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	   // SimpleDateFormat df1 = new SimpleDateFormat();
 		public Shop getShop() {
 			return shop;
 		}
@@ -61,7 +68,7 @@ public class ShopAction {
 		}
 		
 		/*添加shop*/
-		public String addshop() throws Exception{
+		/*public String addshop() throws Exception{
 			
 
 			customer = customerDao.queryCustomerInfo(customer.getName()).get(0);
@@ -69,6 +76,8 @@ public class ShopAction {
 			shop.setCustomer(customer);
 			shop.setFood(food);
 			//因为是“来一份”，所以置为1
+			String time=df.format(new Date());
+			shop.setTime(time);
 			shop.setFoodnum(1);
 			if(customer.getRole()==1){
 				shop.setUnitprice(foodDao.GetFoodById(food.getFoodid()).getVipprice()*1);
@@ -80,7 +89,7 @@ public class ShopAction {
 			}
 						return "shop_message";
 			
-		}
+		}*/
 		
 		/*显示所有shop*/
 	    public String showshop() {
@@ -94,7 +103,7 @@ public class ShopAction {
 
 	        return "show";
 	    }
-	  public String editShop() throws Exception {
+	 /* public String editShop() throws Exception {
 	    	//Shop sho=shopDao.GetShopById(shop.getShopid());
 	    //Food	foo=sho.getFood();
 	    //System.out.print(foo.getFoodid());
@@ -102,7 +111,7 @@ public class ShopAction {
 	    	shopDao.UpdateShop(shop);  
 	    	
 	        return "edit_message";
-	    }
+	    }*/
 	  
 	    /*显示某一shop的详细信息*/
 	    public String showDetail() {
@@ -119,30 +128,51 @@ public class ShopAction {
 	    }
 
 	    /*编辑shop*/
-	  /*  public String editshop() throws Exception {
+	   /* public String editshop() throws Exception {
 	    	shopDao.UpdateShop(shop);
 	        return "edit_message";
 	    }*/
 	    
 	   /*删除shop*/
-	  /*  public String deleteshop() throws Exception {
+	    public String deleteshop() throws Exception {
 	    	shopDao.DeleteShop(food.getFoodid());
 	        return "delete_message";
-	    }*/
+	    }
 	    
 	    /*查询shop*/
-	   /*public String queryShops() throws Exception {
+	  /* public String queryShops() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	shopList = shopDao.QueryShopInfo(customer);
-	    	System.out.println(shopList);
+	    	/*it= shopList.iterator();
+	    	System.out.print(shopList);
+	    	while(it.hasNext()){
+	    		Shop shop=(Shop)it.next();
+	    		String time1=shop.getTime();
+	    		Date firstDate = new Date(time1);
+	    		String time2=df.format(new Date());
+	    		Date secondDate = new Date(time2);
+	    		long firstDateMilliSeconds = firstDate.getTime();
+	    		long secondDateMilliSeconds = secondDate.getTime();
+	    		long firstMinusSecond = firstDateMilliSeconds - secondDateMilliSeconds;
+	    		long milliSeconds = firstMinusSecond;
+	    		int totalSeconds = (int)(milliSeconds / 1000);
+	    		if(totalSeconds>300){
+	    			shopList.remove(shop);
+	    			
+	    		}
+	    	
+	    	
+	    	
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
 	        return "show";
-	    }
+	    }*/
 	    public String deleteShop() throws Exception {
 	    	
 	    	shopDao.DeleteShop(shop.getShopid());
 	        return "message";
-	    }*/
+	    }
+	    
+	    
 
 
 	}

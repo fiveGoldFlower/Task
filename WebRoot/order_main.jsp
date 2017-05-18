@@ -60,26 +60,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							          <th>美食</th>
 							          <th>单价</th> 
 							          <th>份数</th>  
-							          <th>总价</th>
+							         
 	                              </tr>
 	                          </thead>
 	                          <tbody>
 	                              <s:iterator value="orderList" status="status">
 	                                  <tr>
 	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td><s:a href="order/order_showDetail?order.orderid=%{orderid}">
-		                                   <!--<s:property value="orderid"></s:property>-->1</s:a></td>
-	                                      <td><s:property value="food.foodname"></s:property></td>
-	                                      <td class="center"><c:choose>
-	       <c:when test="${customer.role ==1}">
-	         <s:property value="food.vipprice"></s:property></td>
-	       </c:when>
-	         <c:when test="${customer.role ==2}">
-	         <s:property value="food.price"></s:property></td>
-	       </c:when>
-	     </c:choose> 
-	                                      <td class="center"><s:property value="foodnum"></s:property></td>
-	                                      <td class="center"><s:property value="total"></s:property></td>
+	                                      <td><s:property value="order.orderid"></s:property></td>
+	                                      <td><s:property value="order.shop.food.foodname"></s:property></td>
+	                                      <td class="center"> 
+	                                      <s:property value="order.food.unitprice"></s:property></td>
+	                                    <td>  <s:property value="order.shop.foodnum"></s:property></td>
+	                                      <th>总价：<s:property value="total"></s:property></th>
 	                                       <td><s:a href="order/order_addsum?order.food.foodid=%{foodid}"><s:property value="order.foodid"></s:property>1</s:a>添加评</td>
 	                                  </tr>
 	                              </s:iterator>

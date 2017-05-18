@@ -16,7 +16,9 @@ public class Shop implements java.io.Serializable {
 	private Food food;
 	private Integer foodnum;
 	private Integer unitprice;
+	private String time;
 	private Set orders = new HashSet(0);
+	private Set orders_1 = new HashSet(0);
 
 	// Constructors
 
@@ -25,21 +27,25 @@ public class Shop implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Shop(Customer customer, Food food, Integer foodnum, Integer unitprice) {
+	public Shop(Customer customer, Food food, Integer foodnum,
+			Integer unitprice, String time) {
 		this.customer = customer;
 		this.food = food;
 		this.foodnum = foodnum;
 		this.unitprice = unitprice;
+		this.time = time;
 	}
 
 	/** full constructor */
 	public Shop(Customer customer, Food food, Integer foodnum,
-			Integer unitprice, Set orders) {
+			Integer unitprice, String time, Set orders, Set orders_1) {
 		this.customer = customer;
 		this.food = food;
 		this.foodnum = foodnum;
 		this.unitprice = unitprice;
+		this.time = time;
 		this.orders = orders;
+		this.orders_1 = orders_1;
 	}
 
 	// Property accessors
@@ -84,12 +90,28 @@ public class Shop implements java.io.Serializable {
 		this.unitprice = unitprice;
 	}
 
+	public String getTime() {
+		return this.time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public Set getOrders() {
 		return this.orders;
 	}
 
 	public void setOrders(Set orders) {
 		this.orders = orders;
+	}
+
+	public Set getOrders_1() {
+		return this.orders_1;
+	}
+
+	public void setOrders_1(Set orders_1) {
+		this.orders_1 = orders_1;
 	}
 
 }

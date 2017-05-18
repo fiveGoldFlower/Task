@@ -55,14 +55,13 @@ public class OrderDao {
     }
     
     /*根据查询条件查询，一般来说，订单查询时，会根据用户ID查对应的订单，或根据美食的名称查对应的订单*/
-    public ArrayList<Order> QueryOrderInfo(Customer customer, Food food) {
+    public ArrayList<Order> QueryOrderInfo(Customer customer) {
     	Session s = factory.getCurrentSession();
     	String hql = "From Order order where 1=1";
     	if(null != customer && customer.getCustomerid()!=0) 
     		
     		hql = hql + " and order.customer.customerid  ='" + customer.getCustomerid() + "'";//蓝色字的order.customer.customerid表示先查询数据库中的order这个表，再找到order中customer字段，根据customer中的customerID来查询，黑色部分表示输入的参数。
-    	if(null != food && null!=food.getFoodname()) 
-    		hql = hql + " and order.food.foodname like '%" + food.getFoodname() + "%'";
+    	
     	Query q = s.createQuery(hql);
     	List orderList = q.list();
     	return (ArrayList<Order>) orderList;

@@ -2,7 +2,9 @@ package com.food.action;
 
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Resource;
@@ -34,6 +36,7 @@ public class OrderAction {
 	    private int total;
 	    Iterator<Shop> it ;
 	    private Shop a[]=new Shop[50];
+	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	   // List<Order> orde=new ArrayList<Order>();
 	  //private  Shop[] counts = Request.getParameterValues(shop);
 		public Shop getShop() {
@@ -79,21 +82,19 @@ public class OrderAction {
 	    	shopList = shopDao.QueryShopInfo(customer);
 	    	it= shopList.iterator();
 	    	while(it.hasNext()){
-		    		//Order ord1=new Order();
-		    		//Shop shop=new Shop();
 		    		Shop shop=(Shop)it.next();
-		    		System.out.print(shop);
-		    		 //Order ord1=new Order();
 		    		a[i]=shop;
 		    		i++;
-		    		//ord1.setShop(shop);
 		    		total+=shop.getUnitprice()*shop.getFoodnum();
-		    		//ord1.setTotal(total);
 		    		}
 	    	
 		    	for(int j=0;j<i;j++){
 		    		ord.setShop(a[j]);
+		    		System.out.print(a[j]);
 		    		ord.setTotal(total);
+		    		String time=df.format(new Date());
+		    		ord.setTime(time);
+		    		
 		    		//OrderDao order=new OrderDao();
 		    		// @Resource order;
 		    		
@@ -152,10 +153,10 @@ public class OrderAction {
 	    }*/
 	    
 	    /*查询shop*/
-	    public String queryShops() throws Exception {
+	    public String queryOrders() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
-	    	shopList = shopDao.QueryShopInfo(customer);
-	    	System.out.println(shopList);
+	    	orderList = orderDao.QueryOrderInfo(customer);
+	    	System.out.println(orderList);
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
 	        return "show";
 	    }

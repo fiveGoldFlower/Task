@@ -11,6 +11,7 @@ public class Order implements java.io.Serializable {
 	private Integer orderid;
 	private Shop shop;
 	private Integer total;
+	private String time;
 
 	// Constructors
 
@@ -19,9 +20,10 @@ public class Order implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Order(Shop shop, Integer total) {
+	public Order(Shop shop, Integer total, String time) {
 		this.shop = shop;
 		this.total = total;
+		this.time = time;
 	}
 
 	// Property accessors
@@ -48,6 +50,14 @@ public class Order implements java.io.Serializable {
 
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+
+	public String getTime() {
+		return this.time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }

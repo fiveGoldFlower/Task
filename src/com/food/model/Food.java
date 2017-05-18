@@ -13,8 +13,8 @@ public class Food implements java.io.Serializable {
 
 	private Integer foodid;
 	private String foodname;
-	private Integer price;
 	private String filepath;
+	private Integer price;
 	private Integer vipprice;
 	private Set shops = new HashSet(0);
 	private Set shops_1 = new HashSet(0);
@@ -28,21 +28,21 @@ public class Food implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Food(String foodname, Integer price, String filepath,
+	public Food(String foodname, String filepath, Integer price,
 			Integer vipprice) {
 		this.foodname = foodname;
-		this.price = price;
 		this.filepath = filepath;
+		this.price = price;
 		this.vipprice = vipprice;
 	}
 
 	/** full constructor */
-	public Food(String foodname, Integer price, String filepath,
+	public Food(String foodname, String filepath, Integer price,
 			Integer vipprice, Set shops, Set shops_1, Set comments,
 			Set comments_1) {
 		this.foodname = foodname;
-		this.price = price;
 		this.filepath = filepath;
+		this.price = price;
 		this.vipprice = vipprice;
 		this.shops = shops;
 		this.shops_1 = shops_1;
@@ -68,20 +68,20 @@ public class Food implements java.io.Serializable {
 		this.foodname = foodname;
 	}
 
-	public Integer getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
 	public String getFilepath() {
 		return this.filepath;
 	}
 
 	public void setFilepath(String filepath) {
 		this.filepath = filepath;
+	}
+
+	public Integer getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 	public Integer getVipprice() {

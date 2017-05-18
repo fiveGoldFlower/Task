@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<meta http-equiv="Refresh" content="0;url=order/order_queryOrders?customer.customerid=${customer.customerid}">
 	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
