@@ -78,7 +78,8 @@
 	 </package>
        <package name="comment" namespace="/comment" extends="default">
        <action name="comment_*" class="commentAction" method="{1}">
-       <result name="show">/comment.jsp</result></action>
+       <result name="show">/comment.jsp</result>
+       <result name="message">/add_comemnt.jsp</result></action>
        </package>
        <package name="shop" namespace="/shop" extends="default">
        <action name="shop_*" class="shopAction" method="{1}">

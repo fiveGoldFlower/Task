@@ -33,8 +33,10 @@ public class OrderAction {
 	    private Food food;
 	    @Resource OrderDao orderDao;
 	    private List<Order> orderList;
+	    private Order order;
 	    private int total;
 	    Iterator<Shop> it ;
+	    Iterator<Order> it1 ;
 	    private Shop a[]=new Shop[50];
 	    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	   // List<Order> orde=new ArrayList<Order>();
@@ -70,7 +72,7 @@ public class OrderAction {
 		}
 		
 		/*添加shop*/
-		/*public String addOrder() throws Exception{
+	public String addOrder() throws Exception{
 			
 			Order ord =new Order();
 			//ord.setOrderid(x);
@@ -83,9 +85,24 @@ public class OrderAction {
 	    	it= shopList.iterator();
 	    	while(it.hasNext()){
 		    		Shop shop=(Shop)it.next();
+		    		String time1=shop.getTime();
+		    		//@SuppressWarnings("deprecation")
+		    		java.util.Date begin=df.parse(time1);
+		    		
+		    		String time2=df.format(new Date());
+		    		//@SuppressWarnings("deprecation")
+					
+		    		java.util.Date end = df.parse(time2);
+		    		long between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒
+		    		long minute1=between%3600/60;
+		    		if(minute1>5){
+		    			continue;
+		    		}
+		    		else{
 		    		a[i]=shop;
 		    		i++;
 		    		total+=shop.getUnitprice()*shop.getFoodnum();
+		    		}
 		    		}
 	    	
 		    	for(int j=0;j<i;j++){
@@ -111,7 +128,7 @@ public class OrderAction {
 			
 		
 						return "order_message";
-	    	}	*/
+	    	}	
 		
 		
 		/*显示所有shop*/
@@ -129,8 +146,8 @@ public class OrderAction {
 
 	    /*显示某一shop的详细信息*/
 	    public String showDetail() {
-	    	System.out.print(shop.getShopid());
-	    	shop = shopDao.GetShopById(shop.getShopid());
+	    	System.out.print(order.getOrderid());
+	    	order = orderDao.GetOrderById(order.getOrderid());
 	        return "detail_view";
 	    }
 	    
@@ -153,12 +170,33 @@ public class OrderAction {
 	    }*/
 	    
 	    /*查询shop*/
-	    public String queryOrders() throws Exception {
+	  /*  public String queryOrders() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
-	    	orderList = orderDao.QueryOrderInfo(customer);
-	    	System.out.println(orderList);
+	    	orderList = orderDao.QueryAllOrder();
+	    	
+	    	//System.out.println(orderList);
+	    	it1= orderList.iterator();
+	    	while(it1.hasNext()){
+	    		Order order1=(Order)it1.next();
+	    		order=orderDao.GetOrderById(order1.getOrderid());
+	    		String time1=order1.getTime();
+	    		//@SuppressWarnings("deprecation")
+	    		java.util.Date begin=df.parse(time1);
+	    		
+	    		String time2=df.format(new Date());
+	    		//@SuppressWarnings("deprecation")
+				
+	    		java.util.Date end = df.parse(time2);
+	    		long between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒
+	    		//long minute1=between%3600/60;
+	    		if(between>15){
+	    			it1.remove();
+	    			
+	    		}
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
-	        return "show";
+	       
+	    }
+	    	 return "show";
 	    }
 	    public String deleteShop() throws Exception {
 	    	
@@ -182,7 +220,15 @@ public class OrderAction {
 			this.total = total;
 		}
 
+		public Order getOrder() {
+			return order;
+		}
 
+		public void setOrder(Order order) {
+			this.order = order;
+		}
+
+*/
 	}
 
 

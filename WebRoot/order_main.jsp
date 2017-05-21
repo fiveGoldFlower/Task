@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <a href="login.jsp">登录</a>
 	       </c:when>
 	       <c:otherwise>
-	         <c:out value="${customer.name}"></c:out>, 欢迎您!
+	         <c:out value="${customer.name}"></c:out>, 欢迎您! 
 	       </c:otherwise>
 	     </c:choose> 
        </div>    
@@ -48,39 +48,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    <s:form action="order/order_queryOrders" method="post">
 		      <div class="panel panel-info">
 	                 <div class="panel-heading">
-	                    <h3 class="panel-title">我的订单</h3>
+	                    <h3 class="panel-title">我的购物车</h3>
 	                 </div>
 	                 <div class="panel-body panel-body-table">
 	                   <div class="table-responsive" style="overflow-x:hidden">
 	                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 	                         <thead>
 	                           <tr>
-	                              <th>序号</th>  
-							          <th>订单号</th>
+	                              <th>序号</th>
 							          <th>美食</th>
 							          <th>单价</th> 
-							          <th>份数</th>  
-							         
+							          <th>份数</th>
+							          <th></th>
+							          
 	                              </tr>
 	                          </thead>
 	                          <tbody>
 	                              <s:iterator value="orderList" status="status">
 	                                  <tr>
 	                                      <td><s:property value="#status.index+1"></s:property></td>
-	                                      <td><s:property value="order.orderid"></s:property></td>
-	                                      <td><s:property value="order.shop.food.foodname"></s:property></td>
-	                                      <td class="center"> 
-	                                      <s:property value="order.food.unitprice"></s:property></td>
-	                                    <td>  <s:property value="order.shop.foodnum"></s:property></td>
-	                                      <th>总价：<s:property value="total"></s:property></th>
-	                                       <td><s:a href="order/order_addsum?order.food.foodid=%{foodid}"><s:property value="order.foodid"></s:property>1</s:a>添加评</td>
-	                                  </tr>
+	                                      <td><s:property value="shop.food.foodname
+	                                      "></s:property></td>
+	                                      <!--  <td class="center">-->
+	                                        <td class="center"><s:property value="shop.unitprice"></s:property></td>
+	                                      <td class="center"><s:property value="shop.foodnum"></s:property></td>
+
+	                              
 	                              </s:iterator>
-	                          </tbody>
+	                               </tbody>
 	                        </table>
+	                        <p>总价： <s:property value="order.total"></s:property></p>
+	                        
 	                      </div>
 	                    </div>
 	                </div>
+	                <a href="order/order_addOrder?customer.customerid=${customer.customerid}">下单</a>
 		       </s:form>
 	       </div>
 	   </div>

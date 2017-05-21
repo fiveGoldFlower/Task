@@ -68,7 +68,7 @@ public class ShopAction {
 		}
 		
 		/*添加shop*/
-		/*public String addshop() throws Exception{
+		public String addshop() throws Exception{
 			
 
 			customer = customerDao.queryCustomerInfo(customer.getName()).get(0);
@@ -89,7 +89,7 @@ public class ShopAction {
 			}
 						return "shop_message";
 			
-		}*/
+		}
 		
 		/*显示所有shop*/
 	    public String showshop() {
@@ -128,7 +128,7 @@ public class ShopAction {
 	    }
 
 	    /*编辑shop*/
-	   /* public String editshop() throws Exception {
+	   /*public String editshop() throws Exception {
 	    	shopDao.UpdateShop(shop);
 	        return "edit_message";
 	    }*/
@@ -140,39 +140,43 @@ public class ShopAction {
 	    }
 	    
 	    /*查询shop*/
-	  /* public String queryShops() throws Exception {
+	 
+	/*public String queryShops() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	shopList = shopDao.QueryShopInfo(customer);
-	    	/*it= shopList.iterator();
+	    	it= shopList.iterator();
 	    	System.out.print(shopList);
 	    	while(it.hasNext()){
 	    		Shop shop=(Shop)it.next();
 	    		String time1=shop.getTime();
-	    		Date firstDate = new Date(time1);
+	    		//@SuppressWarnings("deprecation")
+	    		java.util.Date begin=df.parse(time1);
+	    		System.out.print(time1);
 	    		String time2=df.format(new Date());
-	    		Date secondDate = new Date(time2);
-	    		long firstDateMilliSeconds = firstDate.getTime();
-	    		long secondDateMilliSeconds = secondDate.getTime();
-	    		long firstMinusSecond = firstDateMilliSeconds - secondDateMilliSeconds;
-	    		long milliSeconds = firstMinusSecond;
-	    		int totalSeconds = (int)(milliSeconds / 1000);
-	    		if(totalSeconds>300){
-	    			shopList.remove(shop);
+	    		//@SuppressWarnings("deprecation")
+				System.out.print(time2);
+	    		java.util.Date end = df.parse(time2);
+	    		long between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒
+	    		
+	    		long minute1=between%3600/60;
+	    		System.out.print(minute1);
+	    		if(minute1>5){
+	    			//shopDao.DeleteShop(shop.getShopid());
+	    			it.remove();
 	    			
 	    		}
-	    	
-	    	
-	    	
 	    	//shopList = shopDao.QueryShopInfo(customer,food);
-	        return "show";
-	    }*/
+	        
+	    }
+	    	return "show";
+	  }
 	    public String deleteShop() throws Exception {
 	    	
 	    	shopDao.DeleteShop(shop.getShopid());
 	        return "message";
 	    }
 	    
-	    
+	 */   
 
 
 	}

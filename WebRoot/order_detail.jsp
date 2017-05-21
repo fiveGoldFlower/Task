@@ -26,22 +26,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+   <s:form action="comment/comemnt_addComment" method="post">
+  <s:hidden name="order.shop.food"></s:hidden>
+  <s:hidden name="order.shop.customer"></s:hidden>
      <p>订单号：<s:property value="order.orderid"></s:property></p>
-     <p>下单顾客：<s:property value="order.customer.name"></s:property></p>
-     <p>美食：<s:property value="order.food.foodname"></s:property></p>
-     <p>
-     <c:choose>
-     <c:when test="${customer.role ==1}">
-	         <s:property value="food.vipprice"></s:property></td>
-	       </c:when>
-	         <c:when test ="${customer.role ==2}">
-	         <s:property value="food.price"></s:property></c:when></c:choose></p>
-     <p>份数：<s:property value="order.foodnum"></s:property></p>
-     <!--  <p>总价：<s:property value="order.total"></s:property></p>-->
-      <!--   <p>发表你的评论: <input type="text" name="food.comment" value="<s:property value='food.comment'/>" class="form-control input-sm" placeholder="&yen;" required>
-       --> <!--  <a href="add_comment.jsp?order.food.foodid=<s:property 
-	                  value='order.food.foodid'/>&order.customer.customerid=<s:property value='#session.customer.customerid'/>">
-	                  <i class="fa fa-cutlery"></i> 来一份-->
-	                  <a href="add_comment.jsp">添加评论</a>
+     <p>下单顾客：<s:property value="order.shop.customer.name"></s:property></p>
+     <p>美食：<s:property value="order.shop.food.foodname"></s:property></p>
+     <p>添加评论：<input type="text" name="comment.comment" value="<s:property value='comment.comment'/>" class="form-control input-sm" placeholder="&yen;" required>
+      <button type="submit" class="btn btn-success pull-right">提  交 </button>
+	                  </p>
+	                  </s:form>
   </body>
 </html>
