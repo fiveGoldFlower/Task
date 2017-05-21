@@ -128,10 +128,10 @@ public class ShopAction {
 	    }
 
 	    /*编辑shop*/
-	   /*public String editshop() throws Exception {
+	   public String editshop() throws Exception {
 	    	shopDao.UpdateShop(shop);
 	        return "edit_message";
-	    }*/
+	    }
 	    
 	   /*删除shop*/
 	    public String deleteshop() throws Exception {
