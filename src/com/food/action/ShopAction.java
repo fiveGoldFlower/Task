@@ -141,7 +141,7 @@ public class ShopAction {
 	    
 	    /*查询shop*/
 	 
-	/*public String queryShops() throws Exception {
+	public String queryShops() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	shopList = shopDao.QueryShopInfo(customer);
 	    	it= shopList.iterator();
@@ -176,7 +176,7 @@ public class ShopAction {
 	        return "message";
 	    }
 	    
-	 */   
+	    
 
 
 	}
