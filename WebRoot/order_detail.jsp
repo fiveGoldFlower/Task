@@ -26,9 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <s:form action="comment/comemnt_addComment" method="post">
-  <s:hidden name="order.shop.food"></s:hidden>
-  <s:hidden name="order.shop.customer"></s:hidden>
+   <s:form action="comment/comment_addComment" method="post">
+  <s:hidden name="order.shop.food.foodid"></s:hidden>
+  <s:hidden name="order.shop.customer.customerid"></s:hidden>
      <p>订单号：<s:property value="order.orderid"></s:property></p>
      <p>下单顾客：<s:property value="order.shop.customer.name"></s:property></p>
      <p>美食：<s:property value="order.shop.food.foodname"></s:property></p>

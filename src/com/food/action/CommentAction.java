@@ -31,6 +31,8 @@ public class CommentAction extends ActionSupport{
     private Customer customer;
     private Food food;
     private Comment comment;
+    private String commen
+    ;
 	public Order getOrder() {
 		return order;
 	}
@@ -65,7 +67,12 @@ public class CommentAction extends ActionSupport{
 	
 	/*添加Order*/
 	public String addComment() throws Exception{
-		order = orderDao.GetOrderById(order.getOrderid());
+		//order = orderDao.GetOrderById(order.getOrderid());
+		food=foodDao.GetFoodById(food.getFoodid());
+		customer=customerDao.GetCustomerById(customer.getCustomerid());
+		comment.setFood(food);
+		comment.setCustomer(customer);
+		comment.setComment(commen);
 		//System.out.print(order.getOrderid());
 		commentDao.AddComment(comment);
 	       return "message";
@@ -117,6 +124,14 @@ public class CommentAction extends ActionSupport{
 
 	public void setComment(Comment comment) {
 		this.comment = comment;
+	}
+
+	public String getCommen() {
+		return commen;
+	}
+
+	public void setCommen(String commen) {
+		this.commen = commen;
 	}
 
 

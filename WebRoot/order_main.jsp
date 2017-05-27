@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -72,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                      <!--  <td class="center">-->
 	                                        <td class="center"><s:property value="shop.unitprice"></s:property></td>
 	                                      <td class="center"><s:property value="shop.foodnum"></s:property></td>
-
+                                          <td> <a href="order/order_showDetail?order.orderid=<s:property value='orderid'/>">添加评论</a></td>
 	                              
 	                              </s:iterator>
 	                               </tbody>

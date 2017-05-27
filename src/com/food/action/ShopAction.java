@@ -103,7 +103,7 @@ public class ShopAction {
 
 	        return "show";
 	    }
-	 /* public String editShop() throws Exception {
+	  public String editShop() throws Exception {
 	    	//Shop sho=shopDao.GetShopById(shop.getShopid());
 	    //Food	foo=sho.getFood();
 	    //System.out.print(foo.getFoodid());
@@ -111,7 +111,7 @@ public class ShopAction {
 	    	shopDao.UpdateShop(shop);  
 	    	
 	        return "edit_message";
-	    }*/
+	    }
 	  
 	    /*显示某一shop的详细信息*/
 	    public String showDetail() {
@@ -160,7 +160,8 @@ public class ShopAction {
 	    		
 	    		long minute1=between%3600/60;
 	    		System.out.print(minute1);
-	    		if(minute1>5){
+	    		if(between>50
+	    				){
 	    			//shopDao.DeleteShop(shop.getShopid());
 	    			it.remove();
 	    			

@@ -95,7 +95,7 @@ public class OrderAction {
 		    		java.util.Date end = df.parse(time2);
 		    		long between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒
 		    		long minute1=between%3600/60;
-		    		if(minute1>5){
+		    		if(between>60){
 		    			continue;
 		    		}
 		    		else{
@@ -170,7 +170,7 @@ public class OrderAction {
 	    }*/
 	    
 	    /*查询shop*/
-	  /*  public String queryOrders() throws Exception {
+	   /* public String queryOrders() throws Exception {
 	    	customer = customerDao.GetCustomerById(customer.getCustomerid());
 	    	orderList = orderDao.QueryAllOrder();
 	    	
@@ -197,7 +197,7 @@ public class OrderAction {
 	       
 	    }
 	    	 return "show";
-	    }
+	    }*/
 	    public String deleteShop() throws Exception {
 	    	
 	    	shopDao.DeleteShop(shop.getShopid());
@@ -228,7 +228,6 @@ public class OrderAction {
 			this.order = order;
 		}
 
-*/
 	}
 
 
